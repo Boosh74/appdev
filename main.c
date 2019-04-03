@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 #include "screen.h"
 #include <time.h>
 #include "sound.h"
 int main(){
 	FILE *f;
-	short sd[80000];
+	short sd[RATE];
 	while(1){
-		system(RCMD);
+		int ret = system(RCMD);
+		if(ret == SIGINT) break;
 		f = fopen("test.wav", "r");
 		if(f == NULL){
 			printf("Cannot open the file\n");
@@ -20,10 +22,8 @@ int main(){
 		fread(&hdr, sizeof(hdr), 1, f); //read wav header
 		fread(&sd, sizeof(sd), 1, f);		//read wav data
 		displayWAVHDR(hdr);
-		//displayWAVDATA();
+		displayWAVDATA(sd);
 	}
 	resetColors();
-	printf("\033[1;1H");
-	getchar();
 	printf("\033[2J");
 }

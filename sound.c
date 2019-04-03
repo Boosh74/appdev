@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "sound.h"
 
 void showID(char *idname, char 	*id){
@@ -8,6 +9,24 @@ void showID(char *idname, char 	*id){
 		printf("%c", id[i]);
 	puts("");
 }
+//function below gets one second of samples and calculates
+//80 pieces of decibel value, one piece per 200 samples by RMS formula (ROOT MEAN SQUARE)
+void displayWAVDATA(short s[]){
+	double rms[80];
+	short *ptr = s;
+	int i, j;
+
+	for(i=0;i<80;i++){
+		double sum=0; //accumulates the sum of squares
+		for(j=0;j<200;j++){
+			sum += *ptr * *ptr;
+			ptr++;
+		}
+		rms[i]=sqrt(sum/200);
+		printf("rms[%d] = %f\n", i, rms[i]);
+	}
+}
+
 void displayWAVHDR(struct WAVHDR h){
 	showID("ChunkID", h.ChunkID);
 	printf("Chunk size: %d\n", h.ChunkSize);
