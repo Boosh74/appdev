@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include "screen.h"
-#include <time.h>
+//#include <time.h>
 #include "sound.h"
 int main(){
 	FILE *f;
