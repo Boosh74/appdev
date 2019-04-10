@@ -4,6 +4,7 @@
 #include "screen.h"
 //#include <time.h>
 #include "sound.h"
+#include "comm.h"
 int main(){
 	FILE *f;
 	short sd[RATE];
@@ -23,6 +24,7 @@ int main(){
 		fread(&sd, sizeof(sd), 1, f);		//read wav data
 		displayWAVHDR(hdr);
 		displayWAVDATA(sd);
+		sendDATA(sd);
 	}
 	resetColors();
 	printf("\033[2J");

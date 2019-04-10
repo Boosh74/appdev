@@ -1,8 +1,8 @@
-OBJ = main.o screen.o sound.o
+OBJ = main.o screen.o sound.o comm.o
 APPNAME = sound.out
 
 $(APPNAME) : $(OBJ)
-	gcc -o $(APPNAME) $(OBJ) -lm #to include math.h
+	gcc -o $(APPNAME) $(OBJ) -lcurl -lm #to include math.h
 
 %.o : %.c
 	gcc -c -o $@ $<

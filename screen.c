@@ -20,14 +20,14 @@ void resetColors(void){
 void barChart(int db[]){
 	int i, j;
 	for(i=0;i<COL;i++){
-		for(j=0;j<round(db[i]/3.0);j++){
-			if((j>=25)&&(db[i]>=75)){
+		for(j=1;j<=(db[i]/3);j++){
+			if(j>=25){
 				setColors(GREEN, bg(BLACK));
 			}
 			else{
 				setColors(RED, bg(BLACK));
 			}
-			printf("\033[%d;%dH", 35-j, i+1);
+			printf("\033[%d;%dH", 36-j, i+1);
 
 #ifdef UNICODE
 			printf("%s", BAR);
@@ -36,8 +36,9 @@ void barChart(int db[]){
 #endif
 		}
 	}
+	fflush(stdout);
 }
-
+/*
 int peakcount(int db[]){
 	int count=0;
 	for(int i=1;i<80;i++){
@@ -45,3 +46,4 @@ int peakcount(int db[]){
 	}
 	return count;
 }
+*/

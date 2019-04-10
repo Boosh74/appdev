@@ -9,6 +9,18 @@ void showID(char *idname, char 	*id){
 		printf("%c", id[i]);
 	puts("");
 }
+
+int findPeaks(int d[]){
+	int c = 0, i;
+	for (i=1;i<80;i++){
+		if(d[i]>=75 && d[i-1]<75){
+			c++;
+		}
+	}
+	if(d[0]>=75) c++;
+	return c;
+}
+
 //function below gets one second of samples and calculates
 //80 pieces of decibel value, one piece per 200 samples by RMS formula (ROOT MEAN SQUARE)
 void displayWAVDATA(short s[]){
@@ -31,11 +43,13 @@ void displayWAVDATA(short s[]){
 	}
 #ifndef DEBUG
 	barChart(dB);
+	int peaks = findPeaks(dB);
 	setColors(WHITE, bg(BLACK));
 	printf("\033[1;42H");
-	printf("Peaks:%d\n", peakcount(dB));
+	printf("Peaks:%d\n", peaks);
 #endif
 }
+
 
 void displayWAVHDR(struct WAVHDR h){
 #ifdef DEBUG
