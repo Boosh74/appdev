@@ -5,7 +5,30 @@
 //#include <time.h>
 #include "sound.h"
 #include "comm.h"
-int main(){
+int main(int argc, char **argv){
+	if(argv>1){
+		printf("Test tone generator\n");
+		int fR, fL, ch;
+		float duration;
+		printf("No. of channels (1 or 2)\n");
+		scanf("%d", &ch);
+		if(ch==1){
+			printf("Mono frequency: ");
+			scanf("%d", &fL);
+		}
+		else if(ch==2){
+			printf("Give Left and Right freq: ");
+			scanf("%d %d", &fL, &fR);
+		}
+		else{
+			printf("Wrong number of channels");
+			return 1;
+		}
+		printf("Duration of sound: ");
+		scanf("%f", &duration);
+		testTone(ch, fL, fR, duration);
+		return 0;
+	}
 	FILE *f;
 	short sd[RATE];
 	while(1){
