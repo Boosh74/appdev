@@ -6,7 +6,7 @@
 #include "sound.h"
 #include "comm.h"
 int main(int argc, char **argv){
-	if(argv>1){
+	if(argc>1){
 		printf("Test tone generator\n");
 		int fR, fL, ch;
 		float duration;
