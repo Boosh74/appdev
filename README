@@ -1,1 +1,49 @@
 # appdev cource ver 1
+
+This application offers a possibility to turn a Raspberry Pi as a sound device.
+The application comes with 2 functionc: a sound collector and a test tone generator.
+
+List of Content
+	1. Configuration Instructions
+		Required:
+			-Raspberry Pi
+			-Internet Connection
+			-USB sound card
+			-Microphone
+	2. Installation Instructions
+		1) Upload the code from the link to your Raspberry: https://github.com/Boosh74/appdev
+		2) Connect your Raspberry to Internet
+		3) Connect Sound Card and Microphone Recommended to use: C-media Electronics Audio Adapter 
+		4) Set USB Sound Card as a deafault sound device with the algorythm below:
+			4.1)Use “sudo nano /etc/asound.conf” command and put following content to the file:
+					pcm.!default {
+					  type plug
+					  slave {
+						  pcm "hw:1,0"
+					  }
+					}
+					ctl.!default {
+				    type hw
+				    card 1
+					}
+			4.2)Go to your home directory. Use “nano .asoundrc” command and put the same content to the file;
+			4.3)Run “alsamixer” you should be able to see that USB sound card is the default audio device;
+					For a more sensitive sound detection, it is better to maximize the volume of “Mic”;
+		5) Install libcurl libtuary;
+			5.1)First use command "ls /usr/include/curl" or "ls /usr/include/arm-linux-gnueabihf/curl" to identify that libcurl library is installed;
+			5.2)If the folder doesn’t exist. Run “sudo apt-get update” to update the application list;
+			5.3)Run “sudo apt-get install libcurl3” to install the libcurl3;
+			5.4)Run “sudo apt-get install libcurl4-openssl-dev” to install the development API of libcurl4;
+
+
+	3. Operating Instructions;
+		3.1. Use "make" command to compile program and build the project;
+		3.2. If you want to record the sound, write it to file "testcurl.txt" and see the graph representetion of your recording, use "./sound.out";
+			3.2.1 To shut down the program use key combination Ctrl+C;
+		3.3. If you want to output mono/stereo signal with any particular frequency and duration, use "./sound.out arg" and give necessary values
+	4. List of Files
+	5. Copyright / Copyleft
+	6. Contact Info.
+	7. Credits and Acknowledgements
+
+
