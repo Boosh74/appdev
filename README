@@ -10,8 +10,9 @@ List of Content
 			-Internet Connection
 			-USB sound card
 			-Microphone
+			-Headphones or Audiosystem
 	2. Installation Instructions
-		1) Upload the code from the link to your Raspberry: https://github.com/Boosh74/appdev
+		1) Use command "git clone www.github.com/Boosh74/appdev" to upload the code from the link to your Raspberry: https://github.com/Boosh74/appdev
 		2) Connect your Raspberry to Internet
 		3) Connect Sound Card and Microphone Recommended to use: C-media Electronics Audio Adapter 
 		4) Set USB Sound Card as a deafault sound device with the algorythm below:
@@ -30,20 +31,36 @@ List of Content
 			4.3)Run “alsamixer” you should be able to see that USB sound card is the default audio device;
 					For a more sensitive sound detection, it is better to maximize the volume of “Mic”;
 		5) Install libcurl libtuary;
-			5.1)First use command "ls /usr/include/curl" or "ls /usr/include/arm-linux-gnueabihf/curl" to identify that libcurl library is installed;
-			5.2)If the folder doesn’t exist. Run “sudo apt-get update” to update the application list;
-			5.3)Run “sudo apt-get install libcurl3” to install the libcurl3;
-			5.4)Run “sudo apt-get install libcurl4-openssl-dev” to install the development API of libcurl4;
+			5.1) First use command "ls /usr/include/curl" or "ls /usr/include/arm-linux-gnueabihf/curl" to identify that libcurl library is installed;
+			5.2) If the folder doesn’t exist. Run sudo apt-get update to update the application list;
+			5.3) Run "sudo apt-get install libcurl3" to install the libcurl3;
+			5.4) Run "sudo apt-get install libcurl4-openssl-dev" to install the development API of libcurl4;
+			5.5) Use "make" command to compile program and build the project;
 
 
 	3. Operating Instructions;
-		3.1. Use "make" command to compile program and build the project;
-		3.2. If you want to record the sound, write it to file "testcurl.txt" and see the graph representetion of your recording, use "./sound.out";
-			3.2.1 To shut down the program use key combination Ctrl+C;
-		3.3. If you want to output mono/stereo signal with any particular frequency and duration, use "./sound.out arg" and give necessary values
-	4. List of Files
+		3.1. If you want to record the sound, write it to file "testcurl.txt" and see the graph representetion of your recording, use "./sound.out";
+			3.1.1 To shut down the program use key combination Ctrl+C;
+		3.2. If you want to output mono/stereo signal with any particular frequency and duration, use "./sound.out arg" and give necessary values;
+	4. List of Files:
+		4.1.  README
+		4.2.  comm.c
+		4.3.  comm.h
+		4.4.  main.c
+		4.5.  makefile
+		4.6.  screen.c
+		4.7.  screen.h
+		4.8.  sound.c
+		4.9.  sound.h
+		4.10. sound.php
+		4.11. testcurl.c
 	5. Copyright / Copyleft
+		Copyleft Freedom 3;
 	6. Contact Info.
-	7. Credits and Acknowledgements
-
+		Email to daniil_bush_2018@mail.ru;
+	7. Credits and Acknowledgement
+		Author: Daniil Bushuev;
+		Application made with the help of Principal Lecturer Gao Chao;
+		And the sponsoring of VAMK office;
+		
 
